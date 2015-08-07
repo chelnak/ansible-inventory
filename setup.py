@@ -12,4 +12,3 @@ setup(
 		ansible-inventory=ansibleinventory.ansibleinventory:cli
 	''',
 )
-	
