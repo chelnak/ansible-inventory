@@ -26,10 +26,13 @@ def cli1():
 @click.option('--hostname',
               required=1,
               help='Hostname of the server to add to the inventory')
+@click.option('--hostaddress',
+	      required=1,
+	      help='IP address of the server to add to the inventory')
 @click.option('--inventory',
               default='/etc/ansible/hosts',
               help='Ansible inventory folder')
-def add(role, hostname, inventory):
+def add(role, hostname, hostaddress, inventory):
 
     hostFile = getHostFile(inventory, hostname)
 
@@ -37,7 +40,7 @@ def add(role, hostname, inventory):
         with open(hostFile, 'w') as f:
 
             f.write('[{role}]\n'.format(role=role))
-            f.write(hostname)
+	    f.write('{hostname} ansible_ssh_host={hostaddress}'.format(hostname=hostname, hostaddress=hostaddress))
 
         click.echo('Host file created at {hostFile} with role: {role}'.format(
             hostFile=hostFile,
