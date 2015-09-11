@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
 	name='ansibleinventory',
-	version='0.1',
+	version='0.2',
 	py_modules=['ansibleinventory.ansibleinventory'],
 	install_requires=[
 		'Click',
